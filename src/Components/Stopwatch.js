@@ -22,6 +22,10 @@ const StopWatch = () => {
         startTime.current = Date.now() - timePassed;
     }
 
+    const stop = () => {
+        setIsRunning(false);
+    }
+
     const reset = () => {
         setTimePassed(0);
         setIsRunning(false);
@@ -42,7 +46,8 @@ const StopWatch = () => {
     return ( <>
     <h1>Stopwatch</h1>
     <div>Time: {formatTime()}</div>
-    <button onClick={start}>Start</button>
+   {!isRunning && <button onClick={start}>Start</button>}
+    {isRunning && <button onClick={stop}>Stop</button>}
     <button onClick={reset}>Reset</button>
     </> );
 }
